@@ -4,9 +4,215 @@
 
 String inputBuffer = "";
 
-// دالة لطباعة موجه الأوامر (Prompt) الخاص بالـ Linux
 void printPrompt() {
     Serial.print("\nroot@esp32:~# ");
+}
+
+// دالة توليد الأسطر الأفقية للحروف (كل حرف يتكون من 4 أسطر بارتفاع 4 صفوف)
+String getLetterRow(char c, int row) {
+    c = toupper(c);
+    
+    // مصفوفة الحروف المخصصة للطباعة الأفقية (ارتفاع 4 أسطر وعرض ثابت 6 رموز لكل حرف)
+    if (c == 'A') {
+        if (row == 0) return "  A   ";
+        if (row == 1) return " / \\  ";
+        if (row == 2) return "|---| ";
+        if (row == 3) return "|   | ";
+    }
+    else if (c == 'B') {
+        if (row == 0) return "|--\\  ";
+        if (row == 1) return "|--/  ";
+        if (row == 2) return "|--\\  ";
+        if (row == 3) return "|--/  ";
+    }
+    else if (c == 'C') {
+        if (row == 0) return "/---  ";
+        if (row == 1) return "|     ";
+        if (row == 2) return "|     ";
+        if (row == 3) return "\\---  ";
+    }
+    else if (c == 'D') {
+        if (row == 0) return "|--\\  ";
+        if (row == 1) return "|   | ";
+        if (row == 2) return "|   | ";
+        if (row == 3) return "|--/  ";
+    }
+    else if (c == 'E') {
+        if (row == 0) return "|---  ";
+        if (row == 1) return "|---  ";
+        if (row == 2) return "|     ";
+        if (row == 3) return "|---  ";
+    }
+    else if (c == 'F') {
+        if (row == 0) return "|---  ";
+        if (row == 1) return "|---  ";
+        if (row == 2) return "|     ";
+        if (row == 3) return "|     ";
+    }
+    else if (c == 'G') {
+        if (row == 0) return "/---  ";
+        if (row == 1) return "|  -\\ ";
+        if (row == 2) return "|   | ";
+        if (row == 3) return "\\---/ ";
+    }
+    else if (c == 'H') {
+        if (row == 0) return "|   | ";
+        if (row == 1) return "|---| ";
+        if (row == 2) return "|   | ";
+        if (row == 3) return "|   | ";
+    }
+    else if (c == 'I') {
+        if (row == 0) return " ---  ";
+        if (row == 1) return "  |   ";
+        if (row == 2) return "  |   ";
+        if (row == 3) return " ---  ";
+    }
+    else if (c == 'J') {
+        if (row == 0) return "  --- ";
+        if (row == 1) return "    | ";
+        if (row == 2) return " |  | ";
+        if (row == 3) return " \\--/ ";
+    }
+    else if (c == 'K') {
+        if (row == 0) return "|  /  ";
+        if (row == 1) return "|--   ";
+        if (row == 2) return "|  \\  ";
+        if (row == 3) return "|   \\ ";
+    }
+    else if (c == 'L') {
+        if (row == 0) return "|     ";
+        if (row == 1) return "|     ";
+        if (row == 2) return "|     ";
+        if (row == 3) return "|___  ";
+    }
+    else if (c == 'M') {
+        if (row == 0) return "|\\ /| ";
+        if (row == 1) return "| X | ";
+        if (row == 2) return "|   | ";
+        if (row == 3) return "|   | ";
+    }
+    else if (c == 'N') {
+        if (row == 0) return "|\\  | ";
+        if (row == 1) return "| \\ | ";
+        if (row == 2) return "|  \\| ";
+        if (row == 3) return "|   | ";
+    }
+    else if (c == 'O') {
+        if (row == 0) return "/---\\ ";
+        if (row == 1) return "|   | ";
+        if (row == 2) return "|   | ";
+        if (row == 3) return "\\---/ ";
+    }
+    else if (c == 'P') {
+        if (row == 0) return "|--\\  ";
+        if (row == 1) return "|--/  ";
+        if (row == 2) return "|     ";
+        if (row == 3) return "|     ";
+    }
+    else if (c == 'Q') {
+        if (row == 0) return "/---\\ ";
+        if (row == 1) return "|   | ";
+        if (row == 2) return "\\---\\ ";
+        if (row == 3) return "     \\";
+    }
+    else if (c == 'R') {
+        if (row == 0) return "|--\\  ";
+        if (row == 1) return "|--/  ";
+        if (row == 2) return "|  \\  ";
+        if (row == 3) return "|   \\ ";
+    }
+    else if (c == 'S') {
+        if (row == 0) return "/---  ";
+        if (row == 1) return "\\---\\ ";
+        if (row == 2) return "    | ";
+        if (row == 3) return "---/  ";
+    }
+    else if (c == 'T') {
+        if (row == 0) return "---|--";
+        if (row == 1) return "   |  ";
+        if (row == 2) return "   |  ";
+        if (row == 3) return "   |  ";
+    }
+    else if (c == 'U') {
+        if (row == 0) return "|   | ";
+        if (row == 1) return "|   | ";
+        if (row == 2) return "|   | ";
+        if (row == 3) return "\\___/ ";
+    }
+    else if (c == 'V') {
+        if (row == 0) return "|   | ";
+        if (row == 1) return "|   | ";
+        if (row == 2) return " \\ /  ";
+        if (row == 3) return "  V   ";
+    }
+    else if (c == 'W') {
+        if (row == 0) return "|   | ";
+        if (row == 1) return "| X | ";
+        if (row == 2) return "|/ \\| ";
+        if (row == 3) return "|   | ";
+    }
+    else if (c == 'X') {
+        if (row == 0) return "\\   / ";
+        if (row == 1) return " \\ /  ";
+        if (row == 2) return " / \\  ";
+        if (row == 3) return "/   \\ ";
+    }
+    else if (c == 'Y') {
+        if (row == 0) return "\\   / ";
+        if (row == 1) return " \\ /  ";
+        if (row == 2) return "  |   ";
+        if (row == 3) return "  |   ";
+    }
+    else if (c == 'Z') {
+        if (row == 0) return "----/ ";
+        if (row == 1) return "   /  ";
+        if (row == 2) return "  /   ";
+        if (row == 3) return "/____ ";
+    }
+    else if (c == ' ') {
+        return "      "; // مسافة أفقية واضحة بين الكلمات
+    }
+    
+    return "      ";
+}
+
+// دالة معالجة وطباعة الـ Banner الأفقي بالكامل
+void printHorizontalBanner(String text) {
+    Serial.println();
+    // نقوم بالمرور على الأسطر الأربعة من 0 إلى 3 لطباعتها صفاً تلو الآخر لضمان بقائها بجانب بعضها
+    for (int row = 0; row < 4; row++) {
+        for (size_t i = 0; i < text.length(); i++) {
+            Serial.print(getLetterRow(text[i], row));
+        }
+        Serial.println(); // سطر جديد بعد انتهاء الصف الحالي من كل الكلمة
+    }
+    Serial.println();
+}
+
+void startNano(String filename) {
+    Serial.printf("\n--- GNU nano 2.9.3 (File: %s) ---\n", filename.c_str());
+    Serial.println("Type your text line by line. Type 'EXIT' on a single line to save and quit.\n");
+    
+    String fileContent = "";
+    while (true) {
+        if (Serial.available()) {
+            String line = Serial.readStringUntil('\n');
+            line.trim();
+            if (line == "EXIT") break;
+            fileContent += line + "\n";
+            Serial.println("  > " + line);
+        }
+        delay(10);
+    }
+    
+    File file = LittleFS.open(filename, "w");
+    if (file) {
+        file.print(fileContent);
+        file.close();
+        Serial.println("\n[ nano: File saved successfully. Exiting... ]");
+    } else {
+        Serial.println("\n[ nano: Error writing file! ]");
+    }
 }
 
 void executeCommand(String cmd) {
@@ -16,159 +222,101 @@ void executeCommand(String cmd) {
         return;
     }
 
-    Serial.println(); // سطر جديد لبدء طباعة مخرجات الأمر
+    Serial.println();
 
-    // 1. أمر استعراض المساعدة والأوامر العشرة المتاحة
-    if (cmd == "help") {
-        Serial.println("\n========================================");
-        Serial.println("   ESP32 Core 10 Linux Commands Menu   ");
-        Serial.println("========================================");
-        Serial.println("help                 - Show this commands list");
-        Serial.println("pwd                  - Print working directory");
-        Serial.println("ls                   - List files in root");
-        Serial.println("touch [file]         - Create an empty file");
-        Serial.println("echo [text] > [file] - Write text into a file");
-        Serial.println("cat [file]           - Display file content");
-        Serial.println("rm [file]            - Delete a file");
-        Serial.println("free                 - Check available RAM & Storage");
-        Serial.println("clear                - Clear the terminal screen");
-        Serial.println("reboot               - Restart the ESP32 OS");
-        Serial.println("========================================");
+    if (cmd.startsWith("banner ")) {
+        String text = cmd.substring(7);
+        printHorizontalBanner(text);
     }
-    // 2. أمر معرفة المجلد الحالي
-    else if (cmd == "pwd") {
-        Serial.println("/root");
+    else if (cmd.startsWith("nano ")) {
+        String filename = "/" + cmd.substring(5); filename.trim();
+        startNano(filename);
     }
-    // 3. أمر استعراض الملفات في الذاكرة
+    else if (cmd == "help") {
+        Serial.println("\n==================================================");
+        Serial.println("   ESP32 Advanced Terminal OS v3.5 (Horizontal CLI)");
+        Serial.println("==================================================");
+        Serial.println("help                  - Show this help system menu");
+        Serial.println("pwd                   - Print current environment root");
+        Serial.println("ls                    - List all active files");
+        Serial.println("touch [file]          - Create an empty file layout");
+        Serial.println("nano [file]           - Open interactive line text editor");
+        Serial.println("banner [word]         - Render text horizontally in one line!");
+        Serial.println("echo [txt] > [file]   - Overwrite text into file");
+        Serial.println("echo [txt] >> [file]  - Append text to the end of file");
+        Serial.println("cat [file]            - Stream file contents into console");
+        Serial.println("rm [file]             - Delete file structurally");
+        Serial.println("free                  - Query physical Heap RAM and LittleFS");
+        Serial.println("clear                 - Clean terminal stdout shell");
+        Serial.println("reboot                - Hard reset the core microprocessor");
+        Serial.println("==================================================");
+    }
+    else if (cmd == "pwd") { Serial.println("/root"); }
     else if (cmd == "ls") {
         String files = "";
-        File root = LittleFS.open("/", "r");
-        File file = root.openNextFile();
-        while(file) {
-            files += String(file.name()) + "  ";
-            file = root.openNextFile();
-        }
-        if(files == "") {
-            Serial.println("(Directory is empty)");
-        } else {
-            Serial.println(files);
-        }
+        File root = LittleFS.open("/", "r"); File file = root.openNextFile();
+        while(file) { files += String(file.name()) + "  "; file = root.openNextFile(); }
+        Serial.println((files == "") ? "(Directory is empty)" : files);
     }
-    // 4. أمر إنشاء ملف فارغ
     else if (cmd.startsWith("touch ")) {
-        String filename = "/" + cmd.substring(6);
-        filename.trim();
-        File f = LittleFS.open(filename, "w");
-        if(f) { 
-            f.close(); 
-            Serial.printf("File '%s' created successfully.\n", filename.c_str()); 
-        } else {
-            Serial.println("touch: Open failed");
-        }
+        String filename = "/" + cmd.substring(6); filename.trim();
+        File f = LittleFS.open(filename, "w"); if(f) f.close();
+        Serial.printf("File '%s' touched.\n", filename.c_str());
     }
-    // 5. أمر قراءة محتوى ملف
     else if (cmd.startsWith("cat ")) {
-        String filename = "/" + cmd.substring(4);
-        filename.trim();
+        String filename = "/" + cmd.substring(4); filename.trim();
         if (LittleFS.exists(filename)) {
             File file = LittleFS.open(filename, "r");
             while(file.available()) Serial.print((char)file.read());
-            file.close();
-            Serial.println();
-        } else {
-            Serial.println("cat: " + filename + ": No such file or directory");
-        }
+            file.close(); Serial.println();
+        } else { Serial.println("cat: " + filename + ": No such file"); }
     }
-    // 6. أمر حذف ملف من الذاكرة
     else if (cmd.startsWith("rm ")) {
-        String filename = "/" + cmd.substring(3);
-        filename.trim();
-        if (LittleFS.exists(filename)) {
-            LittleFS.remove(filename);
-            Serial.println("Removed file: " + filename);
-        } else {
-            Serial.println("rm: cannot remove: No such file or directory");
-        }
+        String filename = "/" + cmd.substring(3); filename.trim();
+        if (LittleFS.exists(filename)) { LittleFS.remove(filename); Serial.println("Removed " + filename); }
     }
-    // 7. أمر فحص ذاكرة النظام والـ RAM
     else if (cmd == "free") {
-        uint32_t freeRAM = ESP.getFreeHeap();
-        size_t totalFlash = LittleFS.totalBytes();
-        size_t usedFlash = LittleFS.usedBytes();
-        Serial.printf("Free Heap RAM : %d Bytes\n", freeRAM);
-        Serial.printf("Storage (FS)  : Total: %d B | Used: %d B | Free: %d B\n", totalFlash, usedFlash, totalFlash - usedFlash);
+        Serial.printf("Free Heap RAM : %d Bytes\n", ESP.getFreeHeap());
+        Serial.printf("Storage Free  : %d Bytes\n", LittleFS.totalBytes() - LittleFS.usedBytes());
     }
-    // 8. أمر تنظيف شاشة الـ Terminal
-    else if (cmd == "clear") {
-        for(int i = 0; i < 50; i++) Serial.println(); 
-    }
-    // 9. أمر إعادة تشغيل النظام
-    else if (cmd == "reboot") {
-        Serial.println("Rebooting ESP32 Kernel...");
-        delay(1000);
-        ESP.restart();
-    }
-    // 10. أمر الكتابة وإعادة التوجيه للملفات (echo)
+    else if (cmd == "clear") { for(int i = 0; i < 60; i++) Serial.println(); }
+    else if (cmd == "reboot") { Serial.println("Rebooting..."); delay(1000); ESP.restart(); }
     else if (cmd.startsWith("echo ")) {
-        int index = cmd.indexOf('>');
-        if (index != -1) {
-            String text = cmd.substring(5, index); 
-            String filename = "/" + cmd.substring(index + 1);
+        int appendIndex = cmd.indexOf(">>"); int overwriteIndex = cmd.indexOf('>');
+        if (appendIndex != -1) {
+            String text = cmd.substring(5, appendIndex); String filename = "/" + cmd.substring(appendIndex + 2);
             text.trim(); filename.trim();
-            File file = LittleFS.open(filename, "w"); 
-            if (file) { 
-                file.print(text); 
-                file.close(); 
-                Serial.println("Data saved in " + filename); 
-            }
-        } else {
-            Serial.println(cmd.substring(5)); // طباعة النص مباشرة إذا لم يتم توجيهه لملف
-        }
+            File file = LittleFS.open(filename, "a"); if (file) { file.println(text); file.close(); Serial.println("Appended."); }
+        } 
+        else if (overwriteIndex != -1) {
+            String text = cmd.substring(5, overwriteIndex); String filename = "/" + cmd.substring(overwriteIndex + 1);
+            text.trim(); filename.trim();
+            File file = LittleFS.open(filename, "w"); if (file) { file.println(text); file.close(); Serial.println("Overwritten."); }
+        } else { Serial.println(cmd.substring(5)); }
     } 
-    else {
-        Serial.println("bash: " + cmd + ": command not found. Type 'help'.");
-    }
+    else { Serial.println("bash: command not found."); }
 
     printPrompt();
 }
 
 void setup() {
     Serial.begin(115200);
-    
-    // إلغاء الـ Watchdog لمنع الـ Reboot أثناء أول عملية تهيئة للفلاش
     esp_task_wdt_delete(NULL); 
     LittleFS.begin(true);
-
     Serial.println("\n\n====================================================");
-    Serial.println("        ESP32 Pure Terminal OS (10 Core Cmds)       ");
+    Serial.println("    ESP32 Advanced Terminal OS v3.5 (Horizontal Line) ");
     Serial.println("====================================================");
-    Serial.println("System fully initialized. Minimal setup active.");
-    Serial.println("Type 'help' to view the active commands registry.");
-    
     printPrompt();
 }
 
 void loop() {
     if (Serial.available()) {
         char c = Serial.read();
-        
-        // عند الضغط على Enter تنفذ الأوامر مباشرة
-        if (c == '\r' || c == '\n') {
-            executeCommand(inputBuffer);
-            inputBuffer = ""; 
-        } 
-        // دعم زر الـ Backspace لمسح الحروف حياً من تيرمينال اللابتوب
+        if (c == '\r' || c == '\n') { executeCommand(inputBuffer); inputBuffer = ""; } 
         else if (c == 8 || c == 127) { 
-            if (inputBuffer.length() > 0) {
-                inputBuffer.remove(inputBuffer.length() - 1);
-                Serial.print("\b \b"); 
-            }
+            if (inputBuffer.length() > 0) { inputBuffer.remove(inputBuffer.length() - 1); Serial.print("\b \b"); }
         } 
-        // استقبال وطباعة الحروف حية أثناء الكتابة
-        else {
-            inputBuffer += c;
-            Serial.print(c); 
-        }
+        else { inputBuffer += c; Serial.print(c); }
     }
     delay(5);
 }
