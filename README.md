@@ -1,6 +1,3 @@
-تفضل تنسيق النص كاملاً بلغة **Markdown** بشكل منظم واحترافي:
-
-```markdown
 # 🚀 ESP32 Mini OS (Embedded Terminal Command Line)
 
 An efficient, lightweight embedded terminal-based operating system built from scratch for the **ESP32 Dev Module** using the **PlatformIO ecosystem** and the **Arduino Framework**.
@@ -21,22 +18,27 @@ This system features a custom CLI (Command Line Interface), an interactive dual-
 ## 🗂️ Supported Shell Commands
 
 ### `help`
+
 * **Syntax:** `help`
 * **Description:** Lists all active kernel commands and system apps.
 
 ### `status`
+
 * **Syntax:** `status`
 * **Description:** Queries the core, logging the CPU clock and checking live Free Heap RAM.
 
 ### `ls`
+
 * **Syntax:** `ls`
 * **Description:** Indexes and prints all active, persistent file names in the root directory.
 
 ### `echo`
+
 * **Syntax:** `echo [Text] > [filename]`
 * **Description:** Streams, creates, or overwrites custom string records into a designated file.
 
 ### `cat`
+
 * **Syntax:** `cat [filename]`
 * **Description:** Reads, handles, and prints the raw data bytes stored inside a specified file.
 
@@ -45,18 +47,21 @@ This system features a custom CLI (Command Line Interface), an interactive dual-
 ## 🚀 Getting Started
 
 ### Hardware Requirements
+
 * **Microcontroller:** ESP32 Dev Module (ESP-WROOM-32).
 * **Display:** LiquidCrystal 16x2 LCD with an I2C backpack interface.
 
 ### Connections
+
 | LCD Pin | ESP32 GPIO |
-| :--- | :--- |
+| --- | --- |
 | **SDA** | GPIO 21 |
 | **SCL** | GPIO 22 |
 | **VCC** | 5V |
 | **GND** | GND |
 
 ### Project Configuration (`platformio.ini`)
+
 Ensure your environment registry is correctly configured. Replace your `platformio.ini` with the following configuration:
 
 ```ini
@@ -108,7 +113,3 @@ lib_deps =
 ## 📄 License
 
 This project is open-source and free to be cloned, modified, or integrated into custom hardware projects. Enjoy hacking! 💻🔥
-
-```
-
-```
